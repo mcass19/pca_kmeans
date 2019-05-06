@@ -12,4 +12,4 @@ data_set.load_data_set()
 
 if option_algorithm == 1:
     pca = PCA()
-    pca.process_data(data_set.data.values)
+    pca.process_data(data_set.data.values, data_set.num_instances)
