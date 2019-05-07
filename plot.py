@@ -1,19 +1,21 @@
-        # # ploteo matriz luego de reescalado
-        # w, h = plt.figaspect(data_r)
-        # fig = plt.figure(figsize=(w,h))
-        # plt.rcParams['legend.fontsize'] = 10   
+from matplotlib import pyplot as plt
 
-        # length = data_r.shape[0]
-        # width = data_r.shape[1]
-        # x, y = np.meshgrid(np.arange(length), np.arange(width))
+class Plot(object):
+    
+    def __init__(self):
+        pass
 
-        # print('aaaa')
-        # print(data_r[list(range(26)), 0:int(num_instances/2)])
+    def plot_pca(self, instances_transformed, cant_votes_per_candidate):
+        plt.figure(figsize=(20,20))
+
+        colors_index = 0
+        colors = ['#F5340A', '#F5B10A', '#A0F50A', '#0AF5D9', '#0A3FF5', '#7C0AF5', '#CA0AF5', '#E70AF5', '#000000', '#838383', '#FFAD7B']
         
+        j = 0
+        for i in cant_votes_per_candidate:
+            plt.plot(instances_transformed[0, j:(j + i)], instances_transformed[1, j:(j + i)], 'o', markersize=7, color=colors[colors_index], alpha=0.2)
+            j = j + i
+            colors_index += 1
         
-        # axes = fig.add_subplot(111, projection='3d')
-        # # axes.scatter(list(range(25)), list(range(32498)), data_r)
-        # axes.plot(data_r[list(range(25)), 0:int(num_instances/2)], data_r[list(range(25)), 0:int(num_instances/2)], data_r[list(range(25)), 0:int(num_instances/2)], 'o', markersize=8, color='red', alpha=0.5)
-        # #     # axes.plot(data_r[i, int(num_instances/2):num_instances], data_r[1, int(num_instances/2):num_instances], data_r[2, int(num_instances/2):num_instances], 'o', markersize=8, color='blue', alpha=0.5)
-        
-        # plt.show()
+        plt.title('Instancias transformadas (colores por partido)')
+        plt.show()
