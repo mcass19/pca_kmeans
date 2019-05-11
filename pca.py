@@ -8,7 +8,7 @@ class Pca(object):
     def __init__(self):
         pass
 
-    def process_data(self, data_set, num_instances, cant_votes_per_candidate):
+    def process_data(self, data_set, num_instances, cant_votes_per_party):
         # transposición de matriz
         data = np.transpose(data_set)
         print('Matriz original:\n', data, '\n')
@@ -59,7 +59,7 @@ class Pca(object):
             print(i)
         print('\n')
 
-        # Matriz w -> dos dimensiones, con los vectores propios en sus columnas
+        # matriz w -> dos dimensiones, con los vectores propios en sus columnas
         matrix_w = np.hstack((eigen_pairs[0][1].reshape(26,1), eigen_pairs[1][1].reshape(26,1)))
         print('Matriz W:\n', matrix_w, '\n')
 
@@ -69,4 +69,4 @@ class Pca(object):
 
         # ploteo del resultado final
         plot = Plot()
-        plot.plot_pca(instances_transformed, cant_votes_per_candidate)
+        plot.plot_pca(instances_transformed, cant_votes_per_party)
